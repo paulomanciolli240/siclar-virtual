@@ -1,9 +1,0 @@
-SICLAR — apresentação com a foto real da fachada
-
-Substitua no repositório os arquivos e pastas deste pacote, preservando:
-- index.html
-- css/estilo.css
-- js/*.js
-- imagens/fachada-lar-doce-lar.jpeg
-
-A foto já está ligada ao banner principal da apresentação.
