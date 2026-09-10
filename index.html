@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SICLAR Lanchonete</title>
+  <style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f7f9;color:#1f2937}.topo{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 24px;background:#fff;border-bottom:1px solid #e5e7eb}.topo h1{margin:0;font-size:24px}.topo p{margin:4px 0 0;color:#6b7280}.mesa-chip{padding:10px 14px;border-radius:999px;background:#111827;color:#fff;font-weight:700;white-space:nowrap}.layout{max-width:1400px;margin:0 auto;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:24px}.catalogo,.carrinho{min-width:0}.barra-busca input,.checkout input,.checkout select,.checkout textarea,.modal textarea{width:100%;border:1px solid #d1d5db;border-radius:12px;padding:13px 14px;font:inherit;background:#fff}.barra-busca input{font-size:16px}.categorias{display:flex;gap:8px;overflow:auto;padding:14px 0}.cat{border:0;border-radius:999px;padding:9px 14px;background:#e5e7eb;font-weight:700;cursor:pointer;white-space:nowrap}.cat.ativa{background:#111827;color:#fff}.grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.produto{display:flex;flex-direction:column;justify-content:space-between;min-height:185px;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.04)}.produto-cat{font-size:12px;font-weight:700;color:#6b7280;text-transform:uppercase}.produto h3{margin:8px 0 6px}.produto p{margin:0;color:#6b7280;line-height:1.4}.produto-rodape{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}.produto-rodape strong{font-size:19px}.produto-rodape button,.btn-enviar,.barra-mobile button{border:0;border-radius:11px;background:#111827;color:#fff;font-weight:700;padding:11px 14px;cursor:pointer}.carrinho{position:sticky;top:92px;align-self:start;background:#fff;border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.06);max-height:calc(100vh - 116px);overflow-y:auto}.carrinho-topo{display:flex;justify-content:space-between;gap:16px;padding:18px;border-bottom:1px solid #e5e7eb}.carrinho-topo h2{margin:3px 0 0;font-size:17px}.carrinho-topo strong{font-size:20px}.itens-carrinho{padding:8px 18px}.itens-carrinho.vazio{padding:24px 18px;color:#6b7280;text-align:center}.item-carrinho{padding:13px 0;border-bottom:1px solid #eee}.item-linha{display:flex;justify-content:space-between;gap:12px}.item-carrinho small{display:block;color:#6b7280;margin-top:6px}.qtd{display:flex;align-items:center;gap:8px;margin-top:10px}.qtd button{border:1px solid #d1d5db;background:#fff;border-radius:8px;min-width:34px;height:32px;cursor:pointer}.qtd .remover{margin-left:auto;width:auto;padding:0 8px;color:#991b1b}.checkout{padding:18px;display:grid;gap:13px}.checkout label,.modal label{font-size:13px;font-weight:700}.checkout label input,.checkout label select,.checkout label textarea,.modal label textarea{margin-top:6px;font-weight:400}.total-final{display:flex;justify-content:space-between;align-items:center;padding:14px 0 4px;font-size:18px}.total-final strong{font-size:24px}.btn-enviar{width:100%;padding:14px;font-size:16px;background:#16a34a}.barra-mobile{display:none}.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.55);padding:18px;align-items:center;justify-content:center}.modal:not([hidden]){display:flex}.modal-card{position:relative;width:min(480px,100%);background:#fff;border-radius:18px;padding:22px}.modal-card h3{margin:0 40px 4px 0}.modal-card p{margin:0 0 18px;color:#6b7280}.modal-fechar{position:absolute;right:14px;top:10px;border:0;background:transparent;font-size:30px;cursor:pointer}.modal-card .btn-enviar{margin-top:16px}.sem-resultados{background:#fff;border-radius:14px;padding:30px;text-align:center;color:#6b7280;grid-column:1/-1}
+@media(max-width:1050px){.grade{grid-template-columns:repeat(2,minmax(0,1fr))}.layout{grid-template-columns:minmax(0,1fr) 340px}}
+@media(max-width:780px){body{padding-bottom:74px}.topo{padding:14px 16px}.topo h1{font-size:20px}.topo p{font-size:12px}.mesa-chip{padding:8px 10px;font-size:13px}.layout{display:block;padding:14px}.grade{grid-template-columns:1fr}.produto{min-height:0}.carrinho{position:static;margin-top:18px;max-height:none}.barra-mobile{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff;border-top:1px solid #d1d5db;box-shadow:0 -3px 12px rgba(0,0,0,.08)}.barra-mobile small{display:block;color:#6b7280}.barra-mobile strong{font-size:18px}.barra-mobile button{background:#16a34a}}
+
+</style>
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <h1 id="nomeEmpresa">SICLAR Lanchonete</h1>
+      <p id="subtituloEmpresa">Peça pelo celular e envie direto no WhatsApp</p>
+    </div>
+    <div class="mesa-chip" id="mesaChip">Mesa não informada</div>
+  </header>
+
+  <main class="layout">
+    <section class="catalogo">
+      <div class="barra-busca">
+        <input id="busca" type="search" placeholder="Pesquisar lanche, bebida, porção..." autocomplete="off">
+      </div>
+      <div id="categorias" class="categorias"></div>
+      <div id="grade" class="grade"></div>
+    </section>
+
+    <aside class="carrinho">
+      <div class="carrinho-topo">
+        <div>
+          <small>Seu pedido</small>
+          <h2 id="resumoQtd">Nenhum item</h2>
+        </div>
+        <strong id="totalTopo">R$ 0,00</strong>
+      </div>
+
+      <div id="itensCarrinho" class="itens-carrinho vazio">Seu carrinho está vazio.</div>
+
+      <div class="checkout">
+        <label>Seu nome
+          <input id="nomeCliente" type="text" placeholder="Ex.: Paulo" maxlength="60">
+        </label>
+        <label>Mesa
+          <input id="mesa" type="text" placeholder="Ex.: 07" maxlength="10">
+        </label>
+        <label>Forma de pagamento
+          <select id="pagamento">
+            <option>PIX</option>
+            <option>DINHEIRO</option>
+            <option>CARTÃO</option>
+          </select>
+        </label>
+        <label>Observação geral
+          <textarea id="observacao" rows="3" placeholder="Ex.: sem cebola, trazer guardanapo..."></textarea>
+        </label>
+        <div class="total-final"><span>Total</span><strong id="totalFinal">R$ 0,00</strong></div>
+        <button id="btnEnviar" class="btn-enviar" type="button">Enviar pedido pelo WhatsApp</button>
+      </div>
+    </aside>
+  </main>
+
+  <div class="barra-mobile" id="barraMobile">
+    <div><small>Total</small><strong id="totalMobile">R$ 0,00</strong></div>
+    <button type="button" id="btnVerPedido">Ver pedido</button>
+  </div>
+
+  <div id="modalObs" class="modal" hidden>
+    <div class="modal-card">
+      <button class="modal-fechar" id="fecharModal" type="button">×</button>
+      <h3 id="modalTitulo">Observação do item</h3>
+      <p id="modalPreco"></p>
+      <label>Observação deste item
+        <textarea id="obsItem" rows="3" placeholder="Ex.: sem tomate, ponto da carne..."></textarea>
+      </label>
+      <button id="confirmarItem" class="btn-enviar" type="button">Adicionar ao pedido</button>
+    </div>
+  </div>
+
+  <script>
+window.SICLAR_CONFIG = {
+  nome: "SICLAR Lanchonete",
+  subtitulo: "Peça pelo celular e envie direto no WhatsApp",
+  whatsapp: "5566999881801",
+  moeda: "BRL",
+  locale: "pt-BR"
+};
+
+
+// Banco pequeno do cardápio. Para alterar preço, nome ou disponibilidade, edite somente este arquivo.
+window.SICLAR_CARDAPIO = [
+  { codigo:"L001", categoria:"Lanches", nome:"X-Salada", descricao:"Pão, hambúrguer, queijo, presunto, alface e tomate", preco:22.00, disponivel:true },
+  { codigo:"L002", categoria:"Lanches", nome:"X-Bacon", descricao:"Pão, hambúrguer, queijo, bacon, alface e tomate", preco:26.00, disponivel:true },
+  { codigo:"L003", categoria:"Lanches", nome:"X-Tudo", descricao:"Pão, hambúrguer, queijo, presunto, bacon, ovo, alface e tomate", preco:30.00, disponivel:true },
+  { codigo:"P001", categoria:"Porções", nome:"Batata frita", descricao:"Porção de batata frita", preco:25.00, disponivel:true },
+  { codigo:"P002", categoria:"Porções", nome:"Calabresa acebolada", descricao:"Porção de calabresa com cebola", preco:32.00, disponivel:true },
+  { codigo:"B001", categoria:"Bebidas", nome:"Coca-Cola lata", descricao:"350 ml", preco:6.00, disponivel:true },
+  { codigo:"B002", categoria:"Bebidas", nome:"Coca-Cola 600 ml", descricao:"600 ml", preco:9.00, disponivel:true },
+  { codigo:"B003", categoria:"Bebidas", nome:"Água mineral", descricao:"500 ml", preco:4.00, disponivel:true },
+  { codigo:"S001", categoria:"Sobremesas", nome:"Pudim", descricao:"Fatia", preco:8.00, disponivel:true }
+];
+
+
+(() => {
+  const cfg = window.SICLAR_CONFIG;
+  const cardapio = (window.SICLAR_CARDAPIO || []).filter(p => p.disponivel !== false);
+  const carrinho = [];
+  let categoriaAtual = "Todos";
+  let produtoModal = null;
+
+  const $ = s => document.querySelector(s);
+  const fmt = v => Number(v || 0).toLocaleString(cfg.locale, {style:"currency", currency:cfg.moeda});
+  const esc = s => String(s ?? "").replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+
+  function mesaDaUrl(){
+    const p = new URLSearchParams(location.search);
+    return (p.get("mesa") || "").trim();
+  }
+
+  function init(){
+    $("#nomeEmpresa").textContent = cfg.nome;
+    $("#subtituloEmpresa").textContent = cfg.subtitulo;
+    const mesa = mesaDaUrl();
+    if (mesa) $("#mesa").value = mesa;
+    atualizarMesaChip();
+    renderCategorias();
+    renderProdutos();
+    atualizarCarrinho();
+
+    $("#busca").addEventListener("input", renderProdutos);
+    $("#mesa").addEventListener("input", atualizarMesaChip);
+    $("#btnEnviar").addEventListener("click", enviarWhatsApp);
+    $("#btnVerPedido").addEventListener("click", () => $(".carrinho").scrollIntoView({behavior:"smooth", block:"start"}));
+    $("#fecharModal").addEventListener("click", fecharModal);
+    $("#confirmarItem").addEventListener("click", confirmarItemModal);
+    $("#modalObs").addEventListener("click", e => { if(e.target === $("#modalObs")) fecharModal(); });
+  }
+
+  function atualizarMesaChip(){
+    const mesa = $("#mesa").value.trim();
+    $("#mesaChip").textContent = mesa ? `Mesa ${mesa}` : "Mesa não informada";
+  }
+
+  function renderCategorias(){
+    const cats = ["Todos", ...new Set(cardapio.map(p => p.categoria))];
+    $("#categorias").innerHTML = cats.map(c => `<button class="cat ${c===categoriaAtual?'ativa':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
+    $("#categorias").querySelectorAll("button").forEach(b => b.onclick = () => {
+      categoriaAtual = b.dataset.cat;
+      renderCategorias();
+      renderProdutos();
+    });
+  }
+
+  function renderProdutos(){
+    const termo = $("#busca").value.trim().toLowerCase();
+    const lista = cardapio.filter(p => {
+      const catOk = categoriaAtual === "Todos" || p.categoria === categoriaAtual;
+      const txt = `${p.nome} ${p.descricao||''} ${p.categoria}`.toLowerCase();
+      return catOk && (!termo || txt.includes(termo));
+    });
+    $("#grade").innerHTML = lista.length ? lista.map(p => `
+      <article class="produto">
+        <div class="produto-info">
+          <span class="produto-cat">${esc(p.categoria)}</span>
+          <h3>${esc(p.nome)}</h3>
+          <p>${esc(p.descricao || '')}</p>
+        </div>
+        <div class="produto-rodape">
+          <strong>${fmt(p.preco)}</strong>
+          <button type="button" data-codigo="${esc(p.codigo)}">Adicionar</button>
+        </div>
+      </article>`).join("") : `<div class="sem-resultados">Nenhum item encontrado.</div>`;
+    $("#grade").querySelectorAll("button[data-codigo]").forEach(b => b.onclick = () => abrirModal(b.dataset.codigo));
+  }
+
+  function abrirModal(codigo){
+    produtoModal = cardapio.find(p => p.codigo === codigo);
+    if(!produtoModal) return;
+    $("#modalTitulo").textContent = produtoModal.nome;
+    $("#modalPreco").textContent = fmt(produtoModal.preco);
+    $("#obsItem").value = "";
+    $("#modalObs").hidden = false;
+    setTimeout(() => $("#obsItem").focus(), 20);
+  }
+  function fecharModal(){ $("#modalObs").hidden = true; produtoModal = null; }
+  function confirmarItemModal(){
+    if(!produtoModal) return;
+    const obs = $("#obsItem").value.trim();
+    const existente = carrinho.find(i => i.codigo === produtoModal.codigo && i.observacao === obs);
+    if(existente) existente.quantidade++;
+    else carrinho.push({...produtoModal, quantidade:1, observacao:obs});
+    fecharModal();
+    atualizarCarrinho();
+  }
+
+  function atualizarCarrinho(){
+    const box = $("#itensCarrinho");
+    if(!carrinho.length){
+      box.className = "itens-carrinho vazio";
+      box.innerHTML = "Seu carrinho está vazio.";
+    } else {
+      box.className = "itens-carrinho";
+      box.innerHTML = carrinho.map((i,idx) => `
+        <div class="item-carrinho">
+          <div class="item-linha"><strong>${esc(i.nome)}</strong><span>${fmt(i.preco*i.quantidade)}</span></div>
+          ${i.observacao ? `<small>Obs.: ${esc(i.observacao)}</small>` : ''}
+          <div class="qtd">
+            <button type="button" data-acao="menos" data-idx="${idx}">−</button>
+            <span>${i.quantidade}</span>
+            <button type="button" data-acao="mais" data-idx="${idx}">+</button>
+            <button type="button" class="remover" data-acao="remover" data-idx="${idx}">Remover</button>
+          </div>
+        </div>`).join("");
+      box.querySelectorAll("button[data-acao]").forEach(b => b.onclick = () => alterarQtd(Number(b.dataset.idx), b.dataset.acao));
+    }
+    const qtd = carrinho.reduce((s,i)=>s+i.quantidade,0);
+    const total = carrinho.reduce((s,i)=>s+i.preco*i.quantidade,0);
+    $("#resumoQtd").textContent = qtd ? `${qtd} item(ns)` : "Nenhum item";
+    ["#totalTopo","#totalFinal","#totalMobile"].forEach(id => $(id).textContent = fmt(total));
+  }
+
+  function alterarQtd(idx, acao){
+    const item = carrinho[idx]; if(!item) return;
+    if(acao === "mais") item.quantidade++;
+    if(acao === "menos") item.quantidade--;
+    if(acao === "remover" || item.quantidade <= 0) carrinho.splice(idx,1);
+    atualizarCarrinho();
+  }
+
+  function montarMensagem(){
+    const nome = $("#nomeCliente").value.trim();
+    const mesa = $("#mesa").value.trim();
+    const pagamento = $("#pagamento").value;
+    const obsGeral = $("#observacao").value.trim();
+    const total = carrinho.reduce((s,i)=>s+i.preco*i.quantidade,0);
+    const linhas = [
+      `*NOVO PEDIDO - ${cfg.nome.toUpperCase()}*`,
+      mesa ? `*MESA:* ${mesa}` : "*MESA:* NÃO INFORMADA",
+      `*CLIENTE:* ${nome || "NÃO INFORMADO"}`,
+      "",
+      "*ITENS:*"
+    ];
+    carrinho.forEach(i => {
+      linhas.push(`${i.quantidade}x ${i.nome} - ${fmt(i.preco*i.quantidade)}`);
+      if(i.observacao) linhas.push(`   Obs.: ${i.observacao}`);
+    });
+    linhas.push("", `*TOTAL: ${fmt(total)}*`, `*PAGAMENTO:* ${pagamento}`);
+    if(obsGeral) linhas.push("", `*OBSERVAÇÃO:* ${obsGeral}`);
+    linhas.push("", "Pedido enviado pelo SICLAR.");
+    return linhas.join("\n");
+  }
+
+  function enviarWhatsApp(){
+    if(!carrinho.length){ alert("Adicione pelo menos um item ao pedido."); return; }
+    if(!$("#mesa").value.trim()){
+      if(!confirm("A mesa não foi informada. Deseja enviar mesmo assim?")) return;
+    }
+    const numero = String(cfg.whatsapp || "").replace(/\D/g, "");
+    if(!numero){ alert("Configure o WhatsApp da lanchonete em js/config.js."); return; }
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(montarMensagem())}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+
+  </script>
+</body>
+</html>
