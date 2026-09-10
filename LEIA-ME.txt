@@ -1,0 +1,15 @@
+SICLAR LANCHONETE - PRIMEIRA VERSÃO FUNCIONAL
+
+1) O sistema é totalmente independente do SICLAR Lar Doce Lar.
+2) Não usa importação, PDF nem banco grande.
+3) O cardápio fica em js/cardapio.js.
+4) O WhatsApp e nome da empresa ficam em js/config.js.
+5) Cada mesa pode ter um QR/link próprio:
+   https://SEU-SITE.com/?mesa=01
+   https://SEU-SITE.com/?mesa=02
+   https://SEU-SITE.com/?mesa=03
+6) O cliente escolhe os itens, coloca observação, nome, forma de pagamento e envia o pedido no WhatsApp.
+7) Para tirar um item do cardápio sem apagar, use disponivel:false em js/cardapio.js.
+
+IMPORTANTE: o WhatsApp atual é apenas o número colocado como exemplo/configuração inicial.
+Troque em js/config.js antes de publicar para outra lanchonete.
